@@ -1,0 +1,19 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+    <h1 class="text-center">Edit Answer</h1>
+    <div class="col-8 offset-2">
+        <form action="/questions/<%= question._id %>/answers/<%= answer._id %>?_method=PUT" method="POST" novalidate class="needs-validation">
+            <div class="mb-3">
+                <label for="body" class="form-label">Answer</label>
+                <textarea name="answer[body]" id="body" cols="30" rows="20" class="form-control" required><%= answer.body %></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn bg-option">Update Answer</button>
+            </div>
+        </form>
+        <a href="/questions/<%= question._id %>" class="btn bg-yellow">Back To Question</a>
+    </div>
+</div>

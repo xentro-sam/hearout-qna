@@ -1,0 +1,111 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/loveButton.css">
+<div class="row">
+    <div class="col-10 offset-1">
+        <div class="card border-info mb-3">
+            <div class="card-header">
+                <div class="row d-grid d-md-flex">
+                    <div class="col-11">
+                        <div>
+                            Submitted by <%= question.author.username %>, <%= question.author.degree %>, <%= question.author.branch %> (Batch : <%= question.author.graduationYear %>)
+                        </div>
+                        <div class="badge bg-pink">
+                            Likes : <span id="question-likes"><%= question.likes %></span>
+                        </div>
+                    </div>
+                    <% if(currentUser) { %>
+                        <div class="col-1">
+                            <button class="heart heart-question <%= question.likedBy.includes(currentUser._id)?'active':'' %>" questionId=<%= question._id %> onclick="updateLikesQuestion()">
+                                <div class="heart-flip"></div>
+                            </button>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="card-body">
+                <h2 class="card-title"><%= question.title %></h2>
+                <p class="card-text"><%= question.description %></p>
+            </div>
+            <% if(currentUser && question.author.equals(currentUser._id)) { %>
+                <div class="card-body">
+                    <div class="d-grid gap-2 d-md-flex">
+                        <form action="/questions/<%= question._id %>/edit">
+                            <button class="btn bg-option">Edit</button>
+                        </form>
+                        <form action="/questions/<%= question._id %>?_method=DELETE" method="POST">
+                            <button class="btn bg-remove">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% } %>
+            <div class="card-footer">
+                <span>Posted at <%= question.createdAt %>,</span>
+                <span>Updated at <%= question.updatedAt %> </span>
+            </div>
+        </div>
+        <% if(currentUser) { %>
+            <a href="/questions/<%= question._id %>/newanswer" class="btn bg-green">Leave an Answer</a>
+        <% } %>
+        <hr>
+        <h4>Answers</h4>
+        <% for(let i=question.answers.length-1;i>=0;i--) { %>
+            <% let answer = question.answers[i] %>
+            <div class="card text-light bg-answers mb-3">
+                <div class="card-header">
+                    <div class="row d-grid d-md-flex">
+                        <div class="col-11">
+                            <div>
+                                Submitted by <%= answer.author.username %>, <%= answer.author.degree %>, <%= answer.author.branch %> (Batch : <%= answer.author.graduationYear %>)
+                            </div>
+                            <div class="badge bg-pink">
+                                Likes : <span id="answer-likes-<%= answer._id %>"><%= answer.likes %></span>
+                            </div>
+                        </div>
+                        <% if(currentUser) { %>
+                            <div class="col-1">
+                                <button class="heart heart-answer-<%= answer._id %> <%= answer.likedBy.includes(currentUser._id)?'active':'' %>" questionId=<%= question._id %> onclick="updateLikesAnswer('<%= answer._id %>')">
+                                    <div class="heart-flip"></div>
+                                </button>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><%= answer.body %></p>
+                    <% if(currentUser && answer.author.equals(currentUser._id)) { %>
+                        <div class="d-grid gap-2 d-md-flex">
+                            <form action="/questions/<%= question._id %>/answers/<%= answer._id %>/edit">
+                                <button class="btn btn-sm bg-option">Edit</button>
+                            </form>
+                            <form action="/questions/<%= question._id %>/answers/<%= answer._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-sm bg-remove">Delete</button>
+                            </form>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="card-footer">
+                    <span>Posted at <%= answer.createdAt %>,</span>
+                    <span>Updated at <%= answer.updatedAt %> </span>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+<script src="/js/loveButton.js"></script>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script>
+    function updateLikesQuestion() {
+        id = $('.heart-question').attr('questionId');
+        $.post('/questions/'+id+'/likeUnlike', function(res) {
+            $('#question-likes').text(res.likeCount);
+        })
+    }
+</script>
+<script>
+    function updateLikesAnswer(answerId) {
+        questionId = $('.heart-answer-'+answerId).attr('questionId');
+        $.post('/questions/'+questionId+'/answers/'+answerId+'/likeUnlike', function(res) {
+            $('#answer-likes-'+answerId).text(res.likeCount);
+        })
+    }
+</script>

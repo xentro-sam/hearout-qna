@@ -1,0 +1,35 @@
+.bg-black {
+    background-color: #000000;
+}
+
+.card {
+    background-color: #222222;
+}
+
+.bg-violet {
+    background-color: #673ab8;
+}
+
+.bg-option {
+    background-color: #00FFF5;
+}
+
+.bg-remove {
+    background-color: #F30A49;
+}
+
+.bg-answers {
+    background-color: #323f4b;
+}
+
+.bg-green {
+    background-color: #21E6C1;
+}
+
+.bg-yellow {
+    background-color: #FFAC41;
+}
+
+.bg-pink {
+    background-color: #C62A88;
+}

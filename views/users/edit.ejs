@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+    <div class="col-8 offset-2">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title text-center">Edit Your Details</h1>
+            </div>
+            <div class="card-body">
+                <form action="/editDetails?_method=PUT" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="branch" class="form-label">Branch</label>
+                        <input type="text" id="branch" name="user[branch]" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="degree" class="form-label">Degree</label>
+                        <input type="text" id="degree" name="user[degree]" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="graduationYear" class="form-label">Graduation Year</label>
+                        <input type="text" id="graduationYear" name="user[graduationYear]" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex">
+                        <button class="btn bg-option">Edit Details</button>
+                        <a href="/questions" class="btn bg-yellow">Back To Questions</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

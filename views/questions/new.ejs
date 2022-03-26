@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+    <h1 class="text-center">New Question</h1>
+    <div class="col-8 offset-2">
+        <form action="/questions" method="POST" novalidate class="needs-validation">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="question[title]" id="title" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" name="question[description]" id="description" cols="30" rows="10" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn bg-green">Add Question</button>
+            </div>
+        </form>
+        <div class="mb-3">
+            <a href="/questions" class="btn btn-lg bg-yellow">All Questions</a>
+        </div>
+    </div>
+</div>

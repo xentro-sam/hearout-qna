@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HearOut</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0">HearOut</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                    <a href="/questions" class="nav-link">All Questions</a>
+                    <% if(!currentUser) { %>
+                        <a href="/login" class="nav-link">Login</a>
+                        <a href="/register" class="nav-link">Register</a>
+                    <% } else { %>
+                        <a href="/logout" class="nav-link">Logout</a>
+                    <% } %>
+                </nav>
+            </div>
+        </header>
+        <main class="px-3">
+            <h1>HearOut</h1>
+            <p class="lead">HearOut is a place for students of KIIT to ask questions. You can ask anything here from our fellow students.</p>
+            <a href="/questions" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Dive Right In!</a>
+        </main>
+        <footer class="mt-auto text-white-50">
+            <p>&copy; 2022 HearOut by Shivam Agarwal</p>
+        </footer>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
