@@ -16,8 +16,8 @@ Install [mongodb](https://www.mongodb.com/)
 Then do :
 
 ```
-git clone https://github.com/xentro-sam/HearOut.git
-cd HearOut
+git clone https://github.com/xentro-sam/hearout-qna.git
+cd hearout-qna
 npm install
 ```
 

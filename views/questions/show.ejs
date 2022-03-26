@@ -39,8 +39,8 @@
                 </div>
             <% } %>
             <div class="card-footer">
-                <span>Posted at <%= question.createdAt %>,</span>
-                <span>Updated at <%= question.updatedAt %> </span>
+                <div>Posted at <%= question.createdAt %></div>
+                <div>Updated at <%= question.updatedAt %></div>
             </div>
         </div>
         <% if(currentUser) { %>
@@ -84,8 +84,8 @@
                     <% } %>
                 </div>
                 <div class="card-footer">
-                    <span>Posted at <%= answer.createdAt %>,</span>
-                    <span>Updated at <%= answer.updatedAt %> </span>
+                    <div>Posted at <%= answer.createdAt %></div>
+                    <div>Updated at <%= answer.updatedAt %></div>
                 </div>
             </div>
         <% } %>
