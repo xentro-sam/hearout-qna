@@ -26,4 +26,4 @@ Run ```mongod``` in another terminal and ```node app.js``` in the terminal with 
 Then go to [localhost:3000](http://localhost:3000/).
 
 ## Project Website
-The project is deployed [here](https://hearoutbyxentro.herokuapp.com/)
+The project is deployed [here](https://hearoutqna.herokuapp.com/)
